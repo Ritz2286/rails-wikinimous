@@ -1,0 +1,12 @@
+<span class="h4"><%= @article.title %></span>
+<%= link_to edit_article_path(@article.id) do %>
+  <small><i class="fas fa-pencil-alt ml-1"></i></small>
+<% end %>
+
+<small><%= link_to article_path(@article.id), method: :delete, data: { confirm: "Delete #{@article.title}?" } do %>
+ <i class="fa fa-trash-o"></i>
+<% end %></small>
+<hr>
+<p class="text-muted"><%= @article.content %></p>
+
+<%= link_to 'Back', articles_path %>

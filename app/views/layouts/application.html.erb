@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsWikinimous</title>
+    <title><%= content_for?(:title) ? yield(:title) : "Wikinimous" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300|Roboto+Slab">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+      <%= link_to 'Wikinimous', articles_path, :class => "text-muted text-decoration-none" %>
+      <%= link_to 'New Article', new_article_path, :class => "text-muted text-decoration-none" %>
+    </nav>
+    <div class="container">
+      <div class="row d-flex justify-content-center mt-5">
+        <div class="col-sm-8 col-sm-offset-2">
+          <%= render "flash" %>
+
+        <%= yield %>
+
+        </div>
+      </div>
+    </div>
+    <script src="https://kit.fontawesome.com/ccb687e217.js" crossorigin="anonymous"></script>
   </body>
 </html>
